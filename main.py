@@ -17,10 +17,10 @@ open_serial_ports ( at_com )
 at_com.reset_input_buffer()
 at_com.reset_output_buffer()
 
-#frame = at_com.read ( 4666 )
 min = datetime.datetime.utcnow().minute
 frame_read_time_up = datetime.datetime.utcnow () + datetime.timedelta ( seconds = data_com_delta_seconds )
 while datetime.datetime.utcnow () < frame_read_time_up :
+#while True :
     frame = at_com.read ( 100 )
     if frame == gn_mostrecent_at_comm :
         at_com.write ( gn_mostrecent_answer )
