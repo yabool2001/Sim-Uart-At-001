@@ -6,14 +6,15 @@ import serial.tools.list_ports
 from lib.serial_ops import open_serial_ports, set_serials_cfg , close_serial_ports , open_serial_ports
 
 data_com_delta_seconds          = 60*60*24
-
+#com_name                        = "stlink"
+com_name                        = "cp210x"
 gn_mostrecent_at_comm	        = b'$GN @*67\n'
 error_at_answer                 = b'$CMD ERR,CMD_NOTIMPLEMENTED*0d\n' 
 gn_mostrecent_answer	        = b'$GN 52.2782,20.8089,84,359,2*2b\n'
 eol                 	        = b'\n'
 
 at_com = serial.Serial ()
-set_serials_cfg ( at_com )
+set_serials_cfg ( at_com , com_name )
 open_serial_ports ( at_com )
 
 at_com.reset_input_buffer()

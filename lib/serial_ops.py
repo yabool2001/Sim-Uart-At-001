@@ -3,11 +3,11 @@ from pprint import pprint
 import serial
 import serial.tools.list_ports
 
-def set_serials_cfg ( com ) :
+def set_serials_cfg ( com , com_name ) :
     serial_ports =  serial.tools.list_ports.comports()
     for s_p in serial_ports:
         #pprint ( s_p.description.lower () )
-        if 'stlink'.lower () in s_p.description.lower () :
+        if com_name.lower () in s_p.description.lower () :
             if platform.system () == "Windows":
                 com.port = s_p.name
             elif platform.system () == "Linux":
